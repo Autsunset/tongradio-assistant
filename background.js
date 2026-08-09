@@ -552,10 +552,12 @@ async function handleMessage(msg) {
       return {
         version: version,
         scripting: !!B.scripting,
+        debugger: !!B.debugger,
         hostGranted: hostGranted,
         radioPattern: radio,
         endAction: cfg.endAction,
         radioUrl: cfg.radioUrl,
+        reliableMode: !!cfg.reliableMode,
         lastInject: lastInjectInfo,
       };
     }

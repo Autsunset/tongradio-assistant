@@ -284,6 +284,8 @@ async function runDiagnose() {
     el.textContent =
       '版本: ' + d.version + '\n' +
       'scripting 可用: ' + (d.scripting ? '✅' : '❌ 需要新版浏览器/重装') + '\n' +
+      'debugger 可用: ' + (d.debugger ? '✅' : '—（Firefox 无此权限，用站点权限）') + '\n' +
+      '可靠模式: ' + (d.reliableMode ? '开 ✅' : '关 ❌') + '\n' +
       '电台域名权限: ' + hostText + '  (' + (d.radioPattern || '未知') + ')\n' +
       '播完动作: ' + d.endAction + '\n' +
       '电台地址: ' + d.radioUrl + '\n' +
