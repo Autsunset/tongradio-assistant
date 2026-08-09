@@ -9,8 +9,7 @@
     "alarms",
     "notifications",
     "tabs",
-    "scripting",
-    "debugger"
+    "scripting"
   ],
   "host_permissions": [
     "https://api.live.bilibili.com/*",
@@ -44,10 +43,12 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "tongradio-assistant@autsun.asia",
-      "strict_min_version": "115.0",
-      "data_collection_permissions": [
-        "none"
-      ]
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "type": [
+          "none"
+        ]
+      }
     }
   }
 }
