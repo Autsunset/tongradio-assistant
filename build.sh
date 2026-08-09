@@ -28,9 +28,15 @@ zip -qr "$DIST/tongradio-assistant-chrome-src.zip" chrome-src
 zip -qr "$DIST/tongradio-assistant-firefox-src.zip" firefox-src
 cd - >/dev/null
 
+# ---------- Firefox xpi（AMO 上传用，manifest 必须在根目录） ----------
+cd "$DIST/firefox-src"
+zip -qr "$DIST/tongradio-assistant-firefox.xpi" manifest.json background.js popup icons
+cd - >/dev/null
+
 echo "---- 产物 ----"
-ls -lh "$DIST"/*.zip
+ls -lh "$DIST"/*.zip "$DIST"/*.xpi
 echo
 echo "使用方法："
 echo "  tongradio-assistant-chrome-src.zip   Chrome/Edge：解压 → 开发者模式 → 加载已解压的扩展程序 → 选 chrome-src"
 echo "  tongradio-assistant-firefox-src.zip  Firefox：解压 → about:debugging → 临时载入 firefox-src/manifest.json"
+echo "  tongradio-assistant-firefox.xpi      Firefox 正式安装：上传到 AMO 签名（manifest 在根目录）→ 下载已签名版双击安装"
