@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>星瞳直播助手</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="hd">
+    <div class="hd-icon"><img src="../icons/icon-32.png" alt="星瞳直播助手" /></div>
+    <div class="hd-text">
+      <h1>星瞳直播助手 <span class="hd-star">★</span></h1>
+      <span class="hd-sub">直播结束自动切电台 / 开播提醒</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- 监控范围 -->
+    <section class="card">
+      <div class="card-title">① 监控范围</div>
+      <label class="radio-row">
+        <input type="radio" name="watchMode" value="fixed" />
+        <span>固定直播间</span>
+      </label>
+      <label class="uid-row">
+        <span class="lbl">主播 UID</span>
+        <input id="fixedUid" type="text" inputmode="numeric" placeholder="如 401315430（星瞳）" />
+      </label>
+      <label class="radio-row">
+        <input type="radio" name="watchMode" value="all" />
+        <span>所有打开的直播间标签页</span>
+      </label>
+    </section>
+
+    <!-- 播完动作 -->
+    <section class="card">
+      <div class="card-title">② 直播结束 / 进入轮播时</div>
+      <label class="radio-row">
+        <input type="radio" name="endAction" value="radio" />
+        <span>切到电台随机播放</span>
+      </label>
+      <label class="uid-row">
+        <span class="lbl">电台地址</span>
+        <input id="radioUrl" type="text" placeholder="https://radio.autsun.asia/" />
+      </label>
+      <div id="permRow" class="perm-row" style="display:none;">
+        <p class="hint">要让电台自动播放，需授权一次这个域名（浏览器自动播放限制）。</p>
+        <button id="grantPerm" type="button" class="btn small">授权电台域名</button>
+      </div>
+      <label class="radio-row">
+        <input type="radio" name="endAction" value="close" />
+        <span>直接关闭直播间标签页</span>
+      </label>
+    </section>
+
+    <!-- 轮询 -->
+    <section class="card">
+      <div class="card-title">③ 轮询间隔</div>
+      <select id="pollSeconds">
+        <option value="30">每 30 秒</option>
+        <option value="60" selected>每 1 分钟（推荐）</option>
+        <option value="120">每 2 分钟</option>
+        <option value="300">每 5 分钟</option>
+      </select>
+    </section>
+
+    <!-- 开播提醒 -->
+    <section class="card">
+      <div class="card-title row-between">
+        <span>④ 开播提醒</span>
+        <label class="switch">
+          <input type="checkbox" id="notifyEnabled" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p class="hint">状态从「未开播 / 轮播」变成「直播中」时发送系统通知。</p>
+      <ul id="uidList" class="uid-list"></ul>
+      <div class="uid-add">
+        <input id="newUid" type="text" inputmode="numeric" placeholder="输入 UID 添加，如 401315430" />
+        <button id="addUidBtn" type="button" title="添加">＋</button>
+      </div>
+    </section>
+    <!-- 可靠模式 -->
+    <section class="card">
+      <div class="card-title row-between">
+        <span>⑤ 可靠模式（自动播放保底）</span>
+        <label class="switch">
+          <input type="checkbox" id="reliableMode" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p class="hint">用浏览器调试接口注入手势、模拟点击播放，几乎 100% 生效（默认开启）。切换时浏览器会短暂出现“正在调试此浏览器”提示条，属正常。</p>
+    </section>
+  </main>
+
+  <footer class="ft">
+    <div class="ft-row">
+      <span id="lastCheck" class="muted">上次检查：-</span>
+    </div>
+    <div class="ft-row btns">
+      <button id="checkNow" type="button" class="btn ghost">立即检查</button>
+      <button id="testEnd" type="button" class="btn ghost" title="对当前直播间标签页立刻执行播完动作，用于测试">测试播完动作</button>
+    </div>
+    <details class="diag">
+      <summary>诊断信息（自动播放没生效时点开看原因）</summary>
+      <pre id="diagText" class="diag-text">读取中…</pre>
+      <div class="btns">
+        <button id="diagRefresh" type="button" class="btn ghost small">刷新诊断</button>
+        <button id="grantPerm2" type="button" class="btn ghost small">授权电台域名（自动播放）</button>
+      </div>
+    </details>
+    <p class="hint center">设置自动保存 · 主播默认星瞳_Official（UID 401315430）</p>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

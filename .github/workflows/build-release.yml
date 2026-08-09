@@ -1,0 +1,51 @@
+name: build-release
+
+# 打 tag（如 v1.0.0）或手动触发时，自动构建并上传安装包到 GitHub Release
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Generate icons
+        run: python3 make_icons.py
+
+      - name: Restore CRX signing key (if configured)
+        # 可选：仓库 Secrets 里放 CRX_KEY（base64 的私钥）可让 crx 的扩展 ID 稳定。
+        # 不放也能构建，但每次 release 生成的 crx ID 会变。
+        if: ${{ secrets.CRX_KEY != '' }}
+        env:
+          CRX_KEY: ${{ secrets.CRX_KEY }}
+        run: echo "$CRX_KEY" | base64 -d > .crx-key.pem
+
+      - name: Build packages
+        run: |
+          chmod +x build.sh
+          # ubuntu-latest 自带 google-chrome-stable
+          CHROME_BIN=$(command -v google-chrome-stable || command -v google-chrome || echo google-chrome) ./build.sh
+
+      - name: List artifacts
+        run: ls -lh dist/
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/tongradio-assistant-chrome.crx
+            dist/tongradio-assistant-chrome-src.zip
+            dist/tongradio-assistant-firefox.xpi
+            dist/tongradio-assistant-firefox-src.zip

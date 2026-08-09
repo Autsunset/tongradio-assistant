@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "星瞳直播助手 · TongRadio Assistant",
+  "short_name": "TongRadio Assistant",
+  "version": "1.2.3",
+  "description": "看 B 站直播睡着后自动接管：直播结束/进入轮播时自动切到你的电台随机播放，或关掉直播间标签页；直播开播时发系统通知。",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "tabs",
+    "scripting",
+    "debugger"
+  ],
+  "host_permissions": [
+    "https://api.live.bilibili.com/*",
+    "https://radio.autsun.asia/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "星瞳直播助手",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tongradio-assistant@autsun.asia",
+      "strict_min_version": "115.0"
+    }
+  }
+}

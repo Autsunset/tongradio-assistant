@@ -1,0 +1,14 @@
+# 签名私钥（绝对不要提交！丢失/泄露会导致扩展 ID 变化或伪造）
+.crx-key.pem
+*.pem
+
+# 构建产物（有 build.sh 可随时重建；如要发布到 GitHub Releases 可自行取消注释）
+/dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统
+.DS_Store
+Thumbs.db
