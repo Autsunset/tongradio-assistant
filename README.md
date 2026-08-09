@@ -17,33 +17,40 @@
 
 ## 📦 安装
 
-### 从 GitHub Releases 下载（最简单）
+### 从 GitHub Releases 下载
 
-在页面右侧 **Releases** 里选最新版本，按你的浏览器下载对应文件：
+在页面右侧 **Releases** 里选最新版本，按你的浏览器下载对应 zip（解压后就是能直接选的文件夹）：
 
-| 你的浏览器 | 下载 | 怎么装 |
-|:--|:--|:--|
-| Chrome / Edge | `tongradio-assistant-chrome-src.zip` | 解压 → 得到 `chrome-src` 文件夹 → 见下方「手动安装」第 2~5 步 |
-| Firefox | `tongradio-assistant-firefox-src.zip` | 解压 → 得到 `firefox-src` 文件夹 → 见「Firefox 手动安装」 |
+| 浏览器 | 下载 |
+|:--|:--|
+| Chrome / Edge | `tongradio-assistant-chrome-src.zip` |
+| Firefox | `tongradio-assistant-firefox-src.zip` |
 
-> GitHub Releases 只能放文件、放不了文件夹，所以 zip 里已经包好了整个文件夹 —— 解压一次，得到的就是能直接选的文件夹，不用再找。
+### Chrome 安装步骤
 
-### Chrome / Edge 手动安装
+1. 下载并解压 zip，得到 `chrome-src` 文件夹（里面能看到 `manifest.json` 就对）
+2. 在浏览器**地址栏输入** `chrome://extensions/` 回车，进入扩展页
+3. 打开页面**右上角**的 **「开发者模式」** 开关
+4. 点左上角 **「加载已解压的扩展程序」** → 选中 `chrome-src` 文件夹
+5. 工具栏出现 📻 图标即安装成功，点击即可设置
 
-1. 解压 `tongradio-assistant-chrome-src.zip`，得到 `chrome-src` 文件夹
-2. 打开 `chrome://extensions`（Edge 是 `edge://extensions`）
-3. 右上角打开 **开发者模式**
-4. 点 **「加载已解压的扩展程序」** → 选中 `chrome-src` 文件夹
-5. 工具栏出现 📻 图标，点击即可配置
+### Edge 安装步骤
 
-> 想重装 / 更新：在 `chrome://extensions` 里点该插件的 **🔄 刷新** 即可。
+1. 同上，下载解压得到 `chrome-src` 文件夹
+2. 地址栏输入 `edge://extensions/` 回车
+3. 打开**左侧**的 **「开发人员模式」** 开关
+4. 点 **「加载解压缩的扩展」** → 选中 `chrome-src` 文件夹
+5. 📻 图标出现即安装成功
 
-### Firefox 手动安装
+### Firefox 安装步骤
 
-1. 解压 `tongradio-assistant-firefox-src.zip`，得到 `firefox-src` 文件夹
-2. 打开 `about:debugging#/runtime/this-firefox`
-3. 点 **「临时载入附加组件」** → 选 `firefox-src` 文件夹里的 `manifest.json`
-4. ⚠️ 临时加载的扩展**重启 Firefox 后会消失**，需重新加载（日常自己用够用）
+1. 下载解压得到 `firefox-src` 文件夹
+2. 地址栏输入 `about:debugging#/runtime/this-firefox` 回车
+3. 点 **「临时载入附加组件」** → 选中 `firefox-src` 文件夹里的 `manifest.json`
+4. 📻 图标出现即安装成功
+5. ⚠️ 临时加载的扩展**重启 Firefox 后会消失**，需重新加载（日常自己用够用）
+
+> 更新版本：Chrome/Edge 在 `chrome://extensions/` 里点该插件的 **🔄 刷新** 即可。
 
 ---
 
