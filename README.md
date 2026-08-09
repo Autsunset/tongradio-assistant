@@ -19,12 +19,20 @@
 
 ### 从 GitHub Releases 下载
 
-在页面右侧 **Releases** 里选最新版本，按你的浏览器下载对应 zip（解压后就是能直接选的文件夹）：
+在页面右侧 **Releases** 里选最新版本，按你的浏览器下载对应 zip：
 
 | 浏览器 | 下载 |
 |:--|:--|
 | Chrome / Edge | `tongradio-assistant-chrome-src.zip` |
 | Firefox | `tongradio-assistant-firefox-src.zip` |
+
+> 💡 **解压后选哪个文件夹？** 判断标准只有一条：**选中的文件夹里要能直接看到 `manifest.json`**。
+> 不同解压软件套的层数不一样：
+> - **7-Zip**：直接解出 `chrome-src` 文件夹，选它即可
+> - **Windows 自带解压 / 部分压缩软件**：会先在 zip 文件名那层外套一层文件夹，完整路径类似
+>   `C:\...\tongradio-assistant-chrome-src.zip\chrome-src\` —— 要**进去这一层**，选里面的 `chrome-src`
+>
+> 换句话说，选中后弹出的确认窗口里能看到 `manifest.json`，那就是对的。
 
 ### Chrome 安装步骤
 
