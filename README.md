@@ -52,9 +52,9 @@
 
 ### Firefox 安装步骤
 
-1. 下载解压得到 `firefox-src` 文件夹
+1. 下载解压得到 `firefox-src` 文件夹（里面能看到 `manifest.json` 就对）
 2. 地址栏输入 `about:debugging#/runtime/this-firefox` 回车
-3. 点 **「临时载入附加组件」** → 选中 `firefox-src` 文件夹里的 `manifest.json`
+3. 点 **「临时载入附加组件」** → 选中 `firefox-src` 文件夹（如果弹出的是文件选择框，就选文件夹里的 `manifest.json`）
 4. 📻 图标出现即安装成功
 5. ⚠️ 临时加载的扩展**重启 Firefox 后会消失**，需重新加载（日常自己用够用）
 
